@@ -19,10 +19,11 @@ payload = {'data': xTest}
 # Fix the single quote bug
 payload = json.dumps(payload)
 
+#print(payload)
+
 # Set request's header.
 headers = {'Content-type': 'application/json'}
 y_predict = requests.post('http://127.0.0.1:5000/iris', headers=headers, data=payload)
-#y_predict = requests.post('http://127.0.0.1:5000/iris', data=payload, headers=headers)
 
 # Make array from the list
 y_predict = np.array(y_predict.json())

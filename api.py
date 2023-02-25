@@ -16,17 +16,18 @@ class IrisClassifier(Resource):
     def post(self):
         args = parser.parse_args()
         
-        #print("args: " + str(args))
+        print("args: " + str(args))
         
         X = np.array(json.loads(args['data']))
 
-        #print("x: " + str(X))
+        print("x: " + str(X))
 
         prediction = model.predict(X)
         return jsonify(prediction.tolist())
 
 api.add_resource(IrisClassifier, '/iris')
 
+# NameError: name 'model' is not defined
 if __name__ == '__main__':
     # Load model
     with open('model.pickle', 'rb') as f:
